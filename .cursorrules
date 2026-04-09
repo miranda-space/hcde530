@@ -1,0 +1,18 @@
+# HCDE530 — project context for Cursor
+
+## Project
+- UW HCDE 530 coursework repository. Keep changes scoped to the assignment or file being worked on.
+- Prefer one flat Git repo: do not add nested `.git` folders inside assignment directories (use normal tracked files only).
+
+## Python
+- Target current Python 3. Use the standard library unless the assignment requires otherwise.
+- For CSV: use `csv` module, open with `encoding="utf-8"` and `newline=""` when reading/writing text CSVs.
+- Keep scripts readable for class: clear variable names, short functions, minimal dependencies.
+- Use `pathlib` or paths relative to the script’s working directory when it makes scripts easier to run from different folders; document if a script must be run from a specific directory.
+
+## Data and privacy
+- Treat CSVs and response data as sensitive course materials unless clearly synthetic; do not invent or paste real participant identifiers into docs or commits unnecessarily.
+
+## Git
+- Commit messages: short, imperative, describe what changed.
+- Before adding new folders with code + data, confirm they are part of this repo and not initialized as separate Git repositories.
