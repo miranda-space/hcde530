@@ -78,13 +78,9 @@ for row in rows:
     if row["satisfaction_score"].strip():
         scored_rows.append((row["participant_name"], int(row["satisfaction_score"])))
 
-# Find the top 5 highest satisfaction scores
-scored_rows = []
-for row in rows:
-    if row["satisfaction_score"].strip():
-        scored_rows.append((row["participant_name"], int(row["satisfaction_score"])))
-
-scored_rows.sort(key=lambda x: x[1])
+# Sort the satisfaction scores in descending order
+scored_rows.sort(key=lambda x: x[1], reverse=True)
+# Get the top 5 satisfaction scores
 top5 = scored_rows[:5]
 
 print("\nTop 5 satisfaction scores:")
