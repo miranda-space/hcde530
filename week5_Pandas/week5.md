@@ -4,7 +4,7 @@
 
 ## What C5 means here
 
-Working with real tables in **pandas**: loading a CSV into a **DataFrame**, inspecting structure and dtypes, spotting “dirty” values that do not show up as NaN (for example **empty strings** in text columns), applying **repeatable cleaning rules**, and writing out a **cleaned CSV** you can trust for later analysis.
+Working with real tables in **pandas**: loading a CSV into a **DataFrame**, inspecting structure and dtypes, spotting “dirty” values that do not show up as NaN (for example **empty strings** in text columns), applying **repeatable cleaning rules**, and writing out a **cleaned CSV** I can trust for later analysis.
 
 ---
 
