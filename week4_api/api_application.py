@@ -1,3 +1,9 @@
+"""Week 4 city lookup (API Ninjas /v1/city).
+
+HCD: API fields work like survey columns.
+First match only needs disambiguation in real studies.
+CSV append logs lookups, API key stays in .env, not Git.
+"""
 import csv
 import os
 import sys
@@ -5,24 +11,27 @@ import sys
 import requests
 from dotenv import load_dotenv
 
-# Load API key from .env file
-load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
-# Save API key to environment variable
+# Section 1: Load credentials safely
+# Read the API key from .env so it is not stored in Git, exit if missing.
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 api_key = os.environ.get("API_NINJAS_KEY")
 
-# Check if API key is set
 if not api_key:
     print("Set API_NINJAS_KEY in week4_api/.env.", file=sys.stderr)
     sys.exit(1)
 
-# Get city name from user
+
+# Section 2: Get city name from user
+# Require a non-empty name after stripping spaces so the API has a real query.
 city_name = input("City name: ").strip()
 if not city_name:
     print("City name cannot be empty.", file=sys.stderr)
     sys.exit(1)
 
-# Make API request, 30 second timeout for slow responses
+
+# Section 3: Request city data from the API
+# Authenticate with X-Api-Key, pass the city as the name query param.
 url = "https://api.api-ninjas.com/v1/city"
 response = requests.get(
     url,
@@ -31,37 +40,37 @@ response = requests.get(
     timeout=30,
 )
 
-# If request fails, print error and exit
 if not response.ok:
     print(response.text)
     sys.exit(1)
 
-# Parse response as JSON
+# Parse JSON, the API returns a list, so an empty list means no match.
 data = response.json()
 
-# If no city found, print error and exit
 if not data:
     print("No city found for that name.")
     sys.exit(0)
 
-# Get first city from response
+
+# Section 4: Extract and display fields
+# Several cities can share a name — we use the first result for this demo only.
 city = data[0]
 
-# Get city details, more than three fields
 name = city.get("name")
 country = city.get("country")
 population = city.get("population")
 latitude = city.get("latitude")
 longitude = city.get("longitude")
 
-# Print city details
 print("Name:", name)
 print("Country:", country)
 print("Population:", population)
 print("Latitude:", latitude)
 print("Longitude:", longitude)
 
-# Save city details to CSV
+
+# Section 5: Save results to CSV
+# Append mode keeps a running log of lookups instead of replacing the file.
 _script_dir = os.path.dirname(os.path.abspath(__file__))
 _csv_path = os.path.join(_script_dir, "city_lookup_results.csv")
 _fieldnames = ["name", "country", "population", "latitude", "longitude"]
@@ -73,13 +82,10 @@ _row = {
     "longitude": longitude,
 }
 _file_exists = os.path.isfile(_csv_path)
-# Append to CSV, create file if it doesn't exist, write header if it doesn't exist
-# Write to file for each city searched
+
 with open(_csv_path, "a", encoding="utf-8", newline="") as f:
     writer = csv.DictWriter(f, fieldnames=_fieldnames)
     if not _file_exists:
         writer.writeheader()
     writer.writerow(_row)
 print("Saved to:", _csv_path)
-
-# I searched Seattle and Dallas as test cases, and they can be found in the CSV file.
