@@ -28,8 +28,10 @@ The CSV rows are **books or works** returned from Open Library for AI-related se
 
 I **summarize** the table, **validate** obvious columns, **fix string empties**, **remove** clearly wrong titles, and **export** the result so the mini-project analysis can start from **`miniproject_dataset_cleaned.csv`** instead of the noisier raw pull.
 
+In **`A5_pandas_hw.ipynb`** (section **Analytical questions**), I use pandas on **`df_cleaned`** to answer three questions: **rows per `search_topic`**, **recency of `first_publish_year`**, and **`languages` distribution / missingness**.
+
 ---
 
 ## claim
 
-I use **pandas** to **load**, **inspect**, and **clean** a tabular dataset from **`miniproject_dataset.csv`**, including **empty-string handling**, **sanity checks on `edition_count`**, and **removing falsely matched works**, then I **save** the result as **`miniproject_dataset_cleaned.csv`**. **`week5.md`** documents what that competency covers, how the raw file was produced, and how the notebook shows the evidence end-to-end.
+I use **pandas** to **load**, **inspect**, **clean**, and **analyze** a tabular dataset from **`miniproject_dataset.csv`**, including **empty-string handling**, **sanity checks on `edition_count`**, **removing falsely matched works**, **three analytical questions on the cleaned table**, and saving **`miniproject_dataset_cleaned.csv`**. **`week5.md`** documents what that competency covers, how the raw file was produced, and how the notebook shows the evidence end-to-end.
