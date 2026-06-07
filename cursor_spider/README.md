@@ -10,7 +10,7 @@ It picks up on what you’re doing in Composer (drafting, running the agent, goi
 
 This is a **local desktop app**, not a hosted website.
 
-**Source code:** [github.com/miranda-space/Cursor_Spider](https://github.com/miranda-space/Cursor_Spider)
+**Source code:** [github.com/miranda-space/hcde530](https://github.com/miranda-space/hcde530.git)
 
 Clone the repo and run it on your machine—the spider appears as a **desktop overlay** (not a link you open from GitHub).
 
@@ -36,7 +36,7 @@ The agent can run the same steps you would manually. This is how most contributo
 ### Option B — Terminal (same steps, by hand)
 
 ```bash
-git clone https://github.com/miranda-space/Cursor_Spider.git
+git clone https://github.com/miranda-space/hcde530.git
 cd Cursor_Spider
 npm install
 npm run build:extension
