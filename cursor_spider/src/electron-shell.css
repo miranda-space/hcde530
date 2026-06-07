@@ -1,0 +1,89 @@
+/* Electron overlay: separate desktop pet window (not in-page content) */
+html.electron-overlay,
+html.electron-overlay body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent !important;
+}
+
+html.electron-overlay :root {
+  background: transparent !important;
+}
+
+html.electron-overlay #root {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 8px 16px 12px 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  background: transparent !important;
+  overflow: visible;
+}
+
+html.electron-overlay .spider-coach {
+  position: relative;
+  left: auto !important;
+  top: auto !important;
+  width: 100%;
+  max-width: 520px;
+  max-height: none;
+  overflow: visible;
+  pointer-events: none;
+  cursor: default;
+  -webkit-app-region: no-drag;
+}
+
+html.electron-overlay .spider-coach-hit {
+  pointer-events: auto;
+  cursor: grab;
+  -webkit-app-region: no-drag;
+}
+
+html.electron-overlay .spider-coach-hit:active {
+  cursor: grabbing;
+}
+
+html.electron-overlay .spider-coach-video,
+html.electron-overlay video {
+  pointer-events: none;
+}
+
+/* Electron dev window: normal panel layout (not floating over desktop) */
+html.electron-dev,
+html.electron-dev body {
+  background: #fff;
+}
+
+html.electron-dev #root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100svh;
+  margin: 0;
+  border: none;
+  text-align: left;
+}
+
+html.electron-dev .spider-dev-panel {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  width: 100%;
+  max-height: none;
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html.electron-dev,
+  html.electron-dev body {
+    background: #16171d;
+  }
+}

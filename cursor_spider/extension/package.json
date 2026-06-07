@@ -1,0 +1,72 @@
+{
+  "name": "cursor-spider-coach",
+  "displayName": "Cursor Spider Coach",
+  "description": "Sends real Cursor coding events to the Spider Coach desktop companion.",
+  "version": "0.0.6",
+  "publisher": "cursor-spider",
+  "private": true,
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished", "onCommand:cursorSpiderCoach.showLog"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cursorSpiderCoach.showLog",
+        "title": "Spider Coach: Show Bridge Log"
+      },
+      {
+        "command": "cursorSpiderCoach.testBuild",
+        "title": "Spider Coach: Test Build Animation"
+      },
+      {
+        "command": "cursorSpiderCoach.testRunning",
+        "title": "Spider Coach: Test Running Animation"
+      },
+      {
+        "command": "cursorSpiderCoach.testCelebrate",
+        "title": "Spider Coach: Test Celebrate Animation"
+      },
+      {
+        "command": "cursorSpiderCoach.reconnect",
+        "title": "Spider Coach: Reconnect Bridge"
+      }
+    ],
+    "configuration": {
+      "title": "Cursor Spider Coach",
+      "properties": {
+        "cursorSpiderCoach.detectComposerDrafts": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect typing in the Composer input before Send (read-only local Cursor DB). Build after ~12 chars or ~2.5s composing in one burst. Requires sqlite3."
+        },
+        "cursorSpiderCoach.detectComposerPrompts": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect when a Composer message is sent (saved user bubble). Requires sqlite3."
+        },
+        "cursorSpiderCoach.detectAgentRunning": {
+          "type": "boolean",
+          "default": true,
+          "description": "Detect when the Cursor agent starts working (generating, reading files). Shows running state 2–8s after work starts, 1 min gap between shows. Requires sqlite3."
+        },
+        "cursorSpiderCoach.keepOverlayVisibleInDev": {
+          "type": "boolean",
+          "default": true,
+          "description": "When the Electron dev app is running (ELECTRON_DEV), do not hide the spider overlay when Cursor loses focus. Use with the dev panel “Pin spider visible” toggle."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.3",
+    "@types/vscode": "^1.85.0",
+    "typescript": "~6.0.2"
+  }
+}
